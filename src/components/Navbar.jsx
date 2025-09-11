@@ -1,10 +1,31 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import { CiSearch, CiShoppingCart } from "react-icons/ci";
 
 const Navbar = () => {
+  const links = (
+    <>
+      <Link className="mr-10" href={"/"}>
+        <li>Home</li>
+      </Link>
+      <Link className="mr-10" href={"/about"}>
+        <li>About</li>
+      </Link>
+      <Link className="mr-10" href={"/services"}>
+        <li>Services</li>
+      </Link>
+      <Link className="mr-10" href={"/blog"}>
+        <li>Blog</li>
+      </Link>
+      <Link className="" href={"/contact"}>
+        <li>Contact</li>
+      </Link>
+    </>
+  );
   return (
-    <div>
-      <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar sticky top-0 z-50 border-b border-gray-200 bg-base-100">
+      <div className="max-w-[1250px] w-[96%] mx-auto flex justify-between items-center">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -28,53 +49,23 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+              {links}
             </ul>
           </div>
-          {/* <a className="">daisyUI</a> */}
-          <Image src={'/assets/logo.svg'} width={70} height={70} alt="logo"></Image>
+          <Image
+            src={"/assets/logo.svg"}
+            width={70}
+            height={70}
+            alt="logo"
+          ></Image>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
+          <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <CiShoppingCart size={20} className="mr-3"/>
+          <CiSearch size={20} className="mr-5"/>
+          <a className="btn border border-orange-500 bg-white rounded-sm text-orange-500 hover:bg-orange-500 hover:text-white">Appointment</a>
         </div>
       </div>
     </div>

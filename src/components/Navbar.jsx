@@ -6,19 +6,19 @@ import { CiSearch, CiShoppingCart } from "react-icons/ci";
 const Navbar = () => {
   const links = (
     <>
-      <Link className="mr-10" href={"/"}>
+      <Link className="mr-10 hover:text-orange-500" href={"/"}>
         <li>Home</li>
       </Link>
-      <Link className="mr-10" href={"/about"}>
+      <Link className="mr-10 hover:text-orange-500" href={"/about"}>
         <li>About</li>
       </Link>
-      <Link className="mr-10" href={"/services"}>
+      <Link className="mr-10 hover:text-orange-500" href={"/services"}>
         <li>Services</li>
       </Link>
-      <Link className="mr-10" href={"/blog"}>
+      <Link className="mr-10 hover:text-orange-500" href={"/blog"}>
         <li>Blog</li>
       </Link>
-      <Link className="" href={"/contact"}>
+      <Link className="hover:text-orange-500" href={"/contact"}>
         <li>Contact</li>
       </Link>
     </>
@@ -28,7 +28,7 @@ const Navbar = () => {
       <div className="max-w-[1250px] w-[96%] mx-auto flex justify-between items-center">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="mr-4 hover:text-orange-500 lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -47,7 +47,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow gap-1"
             >
               {links}
             </ul>

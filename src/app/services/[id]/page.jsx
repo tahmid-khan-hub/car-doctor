@@ -175,8 +175,8 @@ export default async function ServicesDetails({ params }) {
           </div>
 
           {/* Price Section */}
-          <div className="border rounded-xl p-5 text-center shadow-sm">
-            <h4 className="font-bold mb-2">Price $250.00</h4>
+          <div className="mt-12">
+            <h4 className="text-4xl font-bold text-left mb-4">Price $250.00</h4>
             <button className="w-full bg-orange-500 py-2 rounded-lg text-white hover:bg-orange-600">
               Proceed Checkout
             </button>

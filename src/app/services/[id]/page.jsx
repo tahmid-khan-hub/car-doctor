@@ -157,14 +157,21 @@ export default async function ServicesDetails({ params }) {
           </div>
 
           {/* Car Doctor Card */}
-          <div className="border rounded-xl p-5 text-center shadow-sm">
-            <h4 className="font-bold mb-2">Car Doctor</h4>
-            <p className="text-sm text-gray-600 mb-4">
+          <div className="bg-black rounded-xl p-5 text-center shadow-sm pb-12">
+            <div className="my-7"><Image src={"/assets/logo.svg"} alt="logo" width={120} height={120} className="mx-auto object-cover"></Image></div>
+            <p className="text-sm text-white mb-8">
               Need Help? We Are Here To Help You
             </p>
-            <button className="w-full bg-orange-500 py-2 rounded-lg text-white hover:bg-orange-600 mb-3">
+
+            <div className=" p-9">
+              <div className="bg-white p-7 rounded-2xl ">
+              <h5><span className="text-orange-600 text-xl font-semibold">Car Doctor</span> Special</h5>
+              <p className="mb-5">Save up to <span className="text-orange-600 text-sm font-semibold">60% off</span></p>
+            </div>
+            <button className="btn w-[150px] bg-orange-500 py-2 rounded-lg text-white hover:bg-orange-600 mb-3 mt-3">
               Get a Quote
             </button>
+            </div>
           </div>
 
           {/* Price Section */}

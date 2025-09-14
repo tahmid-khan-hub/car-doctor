@@ -1,0 +1,144 @@
+import dbConnect from "@/lib/dbConnect";
+import { ObjectId } from "mongodb";
+import Image from "next/image";
+
+export default async function ServicesDetails({ params }) {
+  const servicesCollection = await dbConnect("services");
+  const data = await servicesCollection.findOne({
+    _id: new ObjectId(params.id),
+  });
+
+  console.log(data);
+
+  return (
+    <div className="max-w-[1250px] mx-auto px-4 py-10">
+      {/* Top Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Left Content */}
+        <div className="lg:col-span-2">
+          {/* Hero Image */}
+          <div className="w-full h-[300px] relative mb-6">
+            <Image
+              src={"/assets/images/banner/3.jpg"}
+              alt="Service"
+              fill
+              className="object-cover rounded-xl"
+            />
+          </div>
+
+          {/* Title & Description */}
+          <h2 className="text-2xl font-bold mb-4">{data.title}</h2>
+          <p className="text-gray-600 mb-8">{data.description}</p>
+
+          {/* 4 Service Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+            {data.facility.map((f, index) => {
+              return (
+                <div
+                  key={index}
+                  className="p-6 border rounded-xl shadow-sm hover:shadow-lg transition"
+                >
+                  <h3 className="font-semibold text-lg mb-2">{f?.name}</h3>
+                  <p className="text-sm text-gray-600">{f?.details}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Process Section */}
+          <h3 className="text-2xl font-bold mb-4">3 Simple Steps to Process</h3>
+          <p className="text-gray-600 mb-8">
+            Follow these quick steps to get your service done with ease.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 flex items-center justify-center bg-orange-500 text-white text-xl font-bold rounded-full mb-3">
+                01
+              </div>
+              <p className="font-semibold">Choose Service</p>
+              <p className="text-sm text-gray-600">
+                Select your preferred service.
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 flex items-center justify-center bg-orange-500 text-white text-xl font-bold rounded-full mb-3">
+                02
+              </div>
+              <p className="font-semibold">Book Appointment</p>
+              <p className="text-sm text-gray-600">
+                Pick a convenient schedule.
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 flex items-center justify-center bg-orange-500 text-white text-xl font-bold rounded-full mb-3">
+                03
+              </div>
+              <p className="font-semibold">Get Service</p>
+              <p className="text-sm text-gray-600">
+                Enjoy hassle-free experience.
+              </p>
+            </div>
+          </div>
+          {/* image */}
+            <div className="mt-11">
+                <Image src={"/assets/images/banner/2.jpg"} alt="image" height={752} width={1561} className="rounded-2xl"></Image>
+            </div>
+        </div>
+
+        {/* Right Sidebar */}
+        <div className="space-y-6">
+          {/* Services List */}
+          <div className="border rounded-xl p-5">
+            <h4 className="font-bold mb-4">Services</h4>
+            <ul className="space-y-2">
+              {[
+                "Full Car Repair",
+                "Engine Repair",
+                "Automatic Services",
+                "Engine Oil Change",
+                "Battery Charge",
+              ].map((item, i) => (
+                <li
+                  key={i}
+                  className="flex justify-between items-center py-2 px-3 border rounded-lg hover:bg-orange-100 cursor-pointer"
+                >
+                  {item} <span className="text-orange-500">→</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Download Section */}
+          <div className="bg-black text-white rounded-xl p-5">
+            <h4 className="font-bold mb-4">Download</h4>
+            <button className="w-full bg-orange-500 py-2 rounded-lg mb-3 hover:bg-orange-600">
+              Our Brochure
+            </button>
+            <button className="w-full bg-orange-500 py-2 rounded-lg hover:bg-orange-600">
+              Company Details
+            </button>
+          </div>
+
+          {/* Car Doctor Card */}
+          <div className="border rounded-xl p-5 text-center shadow-sm">
+            <h4 className="font-bold mb-2">Car Doctor</h4>
+            <p className="text-sm text-gray-600 mb-4">
+              Need Help? We Are Here To Help You
+            </p>
+            <button className="w-full bg-orange-500 py-2 rounded-lg text-white hover:bg-orange-600 mb-3">
+              Get a Quote
+            </button>
+          </div>
+
+          {/* Price Section */}
+          <div className="border rounded-xl p-5 text-center shadow-sm">
+            <h4 className="font-bold mb-2">Price $250.00</h4>
+            <button className="w-full bg-orange-500 py-2 rounded-lg text-white hover:bg-orange-600">
+              Proceed Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

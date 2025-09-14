@@ -7,7 +7,7 @@ export default function ServiceSection() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("/api/services/route.js")
+    fetch("/api/services", { cache: "force-cache" })
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
@@ -46,7 +46,7 @@ export default function ServiceSection() {
 
             <div className="flex justify-between items-center px-4 mt-5">
               <p className="text-orange-500 font-bold -ml-4">Price: ${item.price}</p>
-              <Link href={`/serviceDetails/${item._id}`}><FaArrowRightLong className="text-orange-500" size={19}/></Link>
+              <Link href={`/services/${item._id}`}><FaArrowRightLong className="text-orange-500" size={19}/></Link>
             </div>
           </div>
         ))}

@@ -1,6 +1,7 @@
 import dbConnect from "@/lib/dbConnect";
 import { ObjectId } from "mongodb";
 import Image from "next/image";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 export default async function ServicesDetails({ params }) {
   const servicesCollection = await dbConnect("services");
@@ -80,16 +81,22 @@ export default async function ServicesDetails({ params }) {
             </div>
           </div>
           {/* image */}
-            <div className="mt-11">
-                <Image src={"/assets/images/banner/2.jpg"} alt="image" height={752} width={1561} className="rounded-2xl"></Image>
-            </div>
+          <div className="mt-11">
+            <Image
+              src={"/assets/images/banner/2.jpg"}
+              alt="image"
+              height={752}
+              width={1561}
+              className="rounded-2xl"
+            ></Image>
+          </div>
         </div>
 
         {/* Right Sidebar */}
         <div className="space-y-6">
           {/* Services List */}
-          <div className="border rounded-xl p-5">
-            <h4 className="font-bold mb-4">Services</h4>
+          <div className="bg-gray-100 rounded-xl p-5">
+            <h4 className="text-xl font-bold mb-4">Services</h4>
             <ul className="space-y-2">
               {[
                 "Full Car Repair",
@@ -100,9 +107,10 @@ export default async function ServicesDetails({ params }) {
               ].map((item, i) => (
                 <li
                   key={i}
-                  className="flex justify-between items-center py-2 px-3 border rounded-lg hover:bg-orange-100 cursor-pointer"
+                  className="flex justify-between items-center py-2 px-3 rounded-lg hover:bg-orange-200 bg-white cursor-pointer"
                 >
-                  {item} <span className="text-orange-500">→</span>
+                  {item}{" "}
+                  <FaArrowRightLong className="text-orange-500" size={19} />
                 </li>
               ))}
             </ul>
@@ -110,13 +118,42 @@ export default async function ServicesDetails({ params }) {
 
           {/* Download Section */}
           <div className="bg-black text-white rounded-xl p-5">
-            <h4 className="font-bold mb-4">Download</h4>
-            <button className="w-full bg-orange-500 py-2 rounded-lg mb-3 hover:bg-orange-600">
-              Our Brochure
-            </button>
-            <button className="w-full bg-orange-500 py-2 rounded-lg hover:bg-orange-600">
-              Company Details
-            </button>
+            <h4 className="text-xl font-bold mb-4">Download</h4>
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex gap-2 items-center">
+                <Image
+                  src={"/assets/icons/Frame.png"}
+                  alt="frame"
+                  width={44}
+                  height={1}
+                />
+                <div>
+                  <h5 className="text-lg">Our Brochure</h5>
+                  <p className="text-gray-200">Download</p>
+                </div>
+              </div>
+              <button className="bg-orange-500 p-2 px-3">
+                <FaArrowRightLong className="text-white" size={19} />
+              </button>
+            </div>
+
+            <div className="flex items-center justify-between gap-2 mt-5">
+              <div className="flex gap-2 items-center">
+                <Image
+                  src={"/assets/icons/Frame.png"}
+                  alt="frame"
+                  width={44}
+                  height={1}
+                />
+                <div>
+                  <h5 className="text-lg">Company Details</h5>
+                  <p className="text-gray-200">Download</p>
+                </div>
+              </div>
+              <button className="bg-orange-500 p-2 px-3">
+                <FaArrowRightLong className="text-white" size={19} />
+              </button>
+            </div>
           </div>
 
           {/* Car Doctor Card */}

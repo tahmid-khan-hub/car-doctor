@@ -7,10 +7,11 @@ export default function ServiceSection() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("/services.json")
+    fetch("/api/services/route.js")
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
+  console.log(data);
 
   return (
     <div className="my-12">

@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import RegisterForm from "./components/RegisterForm";
 
 const Register = () => {
   return (
@@ -24,39 +25,7 @@ const Register = () => {
           </h2>
 
           {/* Form Fields */}
-          <form className="space-y-5">
-            <div>
-              <label className="block mb-2 text-sm font-medium">Name</label>
-              <input
-                type="text"
-                placeholder="Enter your name"
-                className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              />
-            </div>
-            <div>
-              <label className="block mb-2 text-sm font-medium">Email</label>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              />
-            </div>
-            <div>
-              <label className="block mb-2 text-sm font-medium">Password</label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition"
-            >
-              Sign Up
-            </button>
-          </form>
+          <RegisterForm></RegisterForm>
 
           {/* Divider */}
           <div className="flex items-center my-6">

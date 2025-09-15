@@ -9,9 +9,11 @@ export default function LoginForm() {
     const password = form.password.value;
 
     try {
-        await signIn("credentials", {username: email, password, callbackUrl: "/"});
+        await signIn("credentials", { email, password, redirect: false, callbackUrl: "/"});
+        alert("Login Successful!");
     } catch (error) {
         console.log(error);
+        alert("Failed to Login");
     }
   };
   return (

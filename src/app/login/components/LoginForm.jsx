@@ -1,3 +1,5 @@
+"use client"
+import {signIn} from "next-auth/react"
 export default function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -6,13 +8,10 @@ export default function LoginForm() {
     const email = form.email.value;
     const password = form.password.value;
 
-    const res = await registerUser({ email, password });
-
-    if (res) {
-      alert("✅ Registration successful!");
-      form.reset();
-    } else {
-      alert("❌ User already exists or registration failed.");
+    try {
+        await signIn("credentials", {username: email, password, callbackUrl: "/"});
+    } catch (error) {
+        console.log(error);
     }
   };
   return (

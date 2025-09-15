@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       <body className={`${geistMono.className} antialiased`}>
         <div>
           <Navbar></Navbar>
-          <main className="max-w-[1250px] mx-auto min-h-screen">{children}</main>
+          <main className="max-w-[1250px] mx-auto ">{children}</main>
           <Footer></Footer>
         </div>
       </body>

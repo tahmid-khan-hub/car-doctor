@@ -1,20 +1,22 @@
-"use client"
-import { signIn } from "next-auth/react";
+"use client";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa6";
 
 const SocialLogin = () => {
   const router = useRouter();
-  const handleSocialLogin = async(providerName) => {
-    const result =  await signIn(providerName);
-    if(result?.ok){
-        router.push("/");
-        alert("Successfully logged in!");
-    }else{
-        alert("Something went wrong");
-    }
+  const session = useSession();
+  const handleSocialLogin = (providerName) => {
+    signIn(providerName);
   };
+
+  useEffect(() => {
+    if(session?.status == "authenticated"){
+        router.push("/");
+        alert("Successfully logged in");
+    }
+  }, [session?.status])
   return (
     <div className="flex gap-4">
       <button

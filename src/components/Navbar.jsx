@@ -1,9 +1,12 @@
+"use client"
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { CiSearch, CiShoppingCart } from "react-icons/ci";
 
 const Navbar = () => {
+  const session = useSession();
   const links = (
     <>
       <Link className="mr-10 hover:text-orange-500" href={"/"}>
@@ -65,6 +68,7 @@ const Navbar = () => {
         <div className="navbar-end">
           <CiShoppingCart size={20} className="mr-3"/>
           <CiSearch size={20} className="mr-5"/>
+          <Link href={"/login"}><button className="btn mr-4">Login</button></Link>
           <a className="btn border border-orange-500 bg-white rounded-sm text-orange-500 hover:bg-orange-500 hover:text-white">Appointment</a>
         </div>
       </div>

@@ -1,6 +1,9 @@
 "use client"
 import {signIn} from "next-auth/react"
+import { useRouter } from "next/router";
 export default function LoginForm() {
+  const router = useRouter();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -9,7 +12,13 @@ export default function LoginForm() {
     const password = form.password.value;
 
     try {
-        await signIn("credentials", { email, password, redirect: false, callbackUrl: "/"});
+        const res = await signIn("credentials", { email, password, redirect: false, callbackUrl: "/"});
+        if(res.ok){
+          router.push("/");
+          form.reset();
+        }else{
+          alert("Login failed");
+        }
         alert("Login Successful!");
     } catch (error) {
         console.log(error);

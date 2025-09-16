@@ -1,8 +1,9 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGoogle, FaGithub } from "react-icons/fa";
 import LoginForm from "./components/LoginForm";
+import SocialLogin from "./components/SocialLogin";
 
 const Login = () => {
   return (
@@ -35,14 +36,7 @@ const Login = () => {
           </div>
 
           {/* Social Buttons */}
-          <div className="flex gap-4">
-            <button className="flex items-center justify-center w-1/2 border rounded-lg py-2 hover:bg-gray-50">
-              <FaGoogle className="mr-2 text-red-500" /> Google
-            </button>
-            <button className="flex items-center justify-center w-1/2 border rounded-lg py-2 hover:bg-gray-50">
-              <FaGithub className="mr-2 text-gray-800" /> Github
-            </button>
-          </div>
+          <SocialLogin></SocialLogin>
 
           {/* Login Link */}
           <p className="text-center text-sm text-gray-600 mt-6">

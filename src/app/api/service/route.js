@@ -20,5 +20,5 @@ export const GET = async(req) => {
         return NextResponse.json(res);
     }
 
-    return NextResponse.json({});
+    return NextResponse.json();
 }

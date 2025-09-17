@@ -170,9 +170,9 @@ export default async function ServicesDetails({ params }) {
           {/* Price Section */}
           <div className="mt-12">
             <h4 className="text-4xl font-bold text-left mb-4">Price $250.00</h4>
-            <button className="w-full bg-orange-500 py-2 rounded-lg text-white hover:bg-orange-600">
+            <Link href={`/checkout/${data._id}`}><button className="w-full bg-orange-500 py-2 rounded-lg text-white hover:bg-orange-600">
               Proceed Checkout
-            </button>
+            </button></Link>
           </div>
         </div>
       </div>

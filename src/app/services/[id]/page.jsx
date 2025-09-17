@@ -1,9 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 export default async function ServicesDetails({ params }) {
   const p = await params;
-  const data = await fetch(`http://localhost:3000/api/service/${p.id}`)
+  const res = await fetch(`http://localhost:3000/api/service/${p.id}`);
+  const data = await res.json();
+  console.log(data);
   return (
     <div className="max-w-[1250px] mx-auto px-4 py-10">
       {/* Top Section */}

@@ -4,10 +4,47 @@ import React from "react";
 
 const CheckoutForm = ({ data }) => {
   const session = useSession();
-  console.log(session);
+
+  const handleConfirmOrder = async(e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+    const date = form.date.value;
+    const amount = form.amount.value;
+    const address = form.address.value;
+    const message = form.message.value;
+
+    const formData = {
+        // user data
+        user_name: name,
+        user_email: email,
+        user_phone: phone,
+        user_address: address,
+
+        // form 
+        date: date,
+        message: message,
+
+        // info
+        service_id: data._id,
+        service_name: data.title,
+        service_price: data.price,
+        service_img: data.img
+    }
+
+    const res = await fetch(`http://localhost:3000/api/service`, {
+        method: "POST",
+        body: JSON.stringify(formData)
+    })
+
+    const postedRes = await res.json();
+  }
   return (
     <div>
-      <form className="mt-6 space-y-4 bg-white shadow-md rounded-xl p-6">
+      <form onSubmit={handleConfirmOrder} className="mt-6 space-y-4 bg-white shadow-md rounded-xl p-6">
         {/* Name */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -16,7 +53,8 @@ const CheckoutForm = ({ data }) => {
           <input
             type="text"
             name="name"
-            defaultValue={session?.user?.name || ""}
+            defaultValue={session?.data?.user?.name || ""}
+            readOnly
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
         </div>
@@ -29,7 +67,8 @@ const CheckoutForm = ({ data }) => {
           <input
             type="email"
             name="email"
-            defaultValue={session?.user?.email || ""}
+            defaultValue={session?.data?.user?.email || ""}
+            readOnly
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
         </div>

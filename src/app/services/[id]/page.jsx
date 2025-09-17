@@ -1,16 +1,9 @@
-import dbConnect from "@/lib/dbConnect";
-import { ObjectId } from "mongodb";
 import Image from "next/image";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 export default async function ServicesDetails({ params }) {
-  const servicesCollection = await dbConnect("services");
-  const data = await servicesCollection.findOne({
-    _id: new ObjectId(params.id),
-  });
-
-  console.log(data);
-
+  const p = await params;
+  const data = await fetch(`http://localhost:3000/api/service/${p.id}`)
   return (
     <div className="max-w-[1250px] mx-auto px-4 py-10">
       {/* Top Section */}
@@ -32,7 +25,7 @@ export default async function ServicesDetails({ params }) {
           <p className="text-gray-600 mb-8">{data.description}</p>
 
           {/* 4 Service Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
             {data.facility.map((f, index) => {
               return (
                 <div
@@ -44,7 +37,7 @@ export default async function ServicesDetails({ params }) {
                 </div>
               );
             })}
-          </div>
+          </div> */}
 
           {/* Process Section */}
           <h3 className="text-2xl font-bold mb-4">3 Simple Steps to Process</h3>

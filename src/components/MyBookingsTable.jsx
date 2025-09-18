@@ -1,3 +1,4 @@
+import DeleteBooking from "@/app/my-bookings/components/DeleteBooking";
 import React from "react";
 import { FaTimes } from "react-icons/fa";
 
@@ -10,9 +11,7 @@ const MyBookingsTable = ({ data }) => {
             <tr key={item._id} className="hover">
               {/* Cross / Delete button */}
               <td>
-                <button className="btn btn-sm btn-circle btn-ghost text-red-500">
-                  <FaTimes size={20}/>
-                </button>
+                <DeleteBooking id={item._id}></DeleteBooking>
               </td>
 
               {/* Service image */}

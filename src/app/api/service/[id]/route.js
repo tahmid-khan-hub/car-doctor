@@ -3,6 +3,7 @@ import { ObjectId } from "mongodb";
 import dbConnect from "@/lib/dbConnect";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
+import { revalidatePath } from "next/cache";
 
 export const GET = async (req, { params }) => {
   const servicesCollection = await dbConnect("services");
@@ -26,6 +27,7 @@ export const DELETE = async(req, {params}) => {
   if(isOwnerValid){
     // user specific delete
     const deleteRes = await BookedOrderCollection.deleteOne(query);
+    revalidatePath("/my-bookings");
     return NextResponse.json(deleteRes);
   }
   else{

@@ -20,7 +20,7 @@ const CheckoutForm = ({ data }) => {
     const formData = {
         // user data
         user_name: name,
-        user_email: email,
+        email: email,
         user_phone: phone,
         user_address: address,
 

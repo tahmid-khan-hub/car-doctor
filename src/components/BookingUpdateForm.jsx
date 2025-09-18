@@ -1,3 +1,4 @@
+"use client"
 import { useSession } from "next-auth/react";
 import React from "react";
 
@@ -22,9 +23,10 @@ const BookingUpdateForm = ({data}) => {
   };
   return (
     <div>
+        <h1 className="text-center mt-5 font-bold text-3xl mb-11">Update Bookings</h1>
       <form
         onSubmit={handleUpdateBooking}
-        className="mt-6 space-y-4 bg-white shadow-md rounded-xl p-6"
+        className="mt-6 space-y-4 bg-white shadow-md rounded-xl p-6 mb-24"
       >
         {/* Name */}
         <div>
@@ -108,25 +110,12 @@ const BookingUpdateForm = ({data}) => {
           />
         </div>
 
-        {/* Message */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Message
-          </label>
-          <textarea
-            name="message"
-            rows="4"
-            placeholder="Write your message here..."
-            className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
-          ></textarea>
-        </div>
-
         {/* Button */}
         <button
           type="submit"
-          className="w-full bg-orange-500 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition"
+          className="w-full bg-orange-500 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition mt-5"
         >
-          Confirm Order
+          Update
         </button>
       </form>
     </div>

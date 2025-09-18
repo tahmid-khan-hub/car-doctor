@@ -1,6 +1,7 @@
 import DeleteBooking from "@/app/my-bookings/components/DeleteBooking";
+import Link from "next/link";
 import React from "react";
-import { FaTimes } from "react-icons/fa";
+import { MdEdit } from "react-icons/md";
 
 const MyBookingsTable = ({ data }) => {
   return (
@@ -10,6 +11,11 @@ const MyBookingsTable = ({ data }) => {
           {data?.map((item) => (
             <tr key={item._id} className="hover">
               {/* Cross / Delete button */}
+              <td>
+                <Link href={`/my-bookings/${item._id}`}><MdEdit /></Link>
+              </td>
+
+              {/* Edit button */}
               <td>
                 <DeleteBooking id={item._id}></DeleteBooking>
               </td>

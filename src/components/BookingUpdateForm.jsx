@@ -1,10 +1,12 @@
 "use client"
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const BookingUpdateForm = ({data}) => {
   const session = useSession();
   console.log(data);
+  const router = useRouter();
 
   const handleUpdateBooking = async (e) => {
     e.preventDefault();
@@ -20,6 +22,13 @@ const BookingUpdateForm = ({data}) => {
       date: date,
     };
 
+    const res = await fetch(`http://localhost:3000/api/my-bookings/${data._id}`, {
+        method: "PATCH",
+        body: JSON.stringify(formData),
+    })
+    const updatedRes = await res.json();
+    router.push("/my-bookings");
+    console.log(updatedRes);
   };
   return (
     <div>

@@ -1,5 +1,6 @@
 import dbConnect from "@/lib/dbConnect"
 import { ObjectId } from "mongodb";
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export const GET = async(req, {params}) => {
@@ -22,5 +23,6 @@ export const PATCH = async(req, {params}) => {
     const options = {upsert: true}
     const updatedRes = await BookedOrderCollection.updateOne(query, filter, options)
 
-    return NextResponse(updatedRes);
+    revalidatePath("/my-bookings")
+    return NextResponse.json(updatedRes);
 }

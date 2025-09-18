@@ -18,11 +18,8 @@ const Navbar = () => {
       <Link className="mr-10 hover:text-orange-500" href={"/services"}>
         <li>Services</li>
       </Link>
-      <Link className="mr-10 hover:text-orange-500" href={"/blog"}>
-        <li>Blog</li>
-      </Link>
-      <Link className="hover:text-orange-500" href={"/contact"}>
-        <li>Contact</li>
+      <Link className="hover:text-orange-500" href={"/my-bookings"}>
+        <li>My Bookings</li>
       </Link>
     </>
   );
